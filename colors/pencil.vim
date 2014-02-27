@@ -58,7 +58,8 @@ else
 endif
 
 let s:pink            = { "gui": "#fb007a", "cterm": "9"   }
-let s:red             = { "gui": "#C30771", "cterm": "1"   }
+let s:dark_red        = { "gui": "#C30771", "cterm": "1"   }
+let s:light_red       = { "gui": "#E32791", "cterm": "1"   }
 let s:orange          = { "gui": "#D75F5F", "cterm": "167" }
 
 let s:darker_blue     = { "gui": "#005F87", "cterm": "18"  }
@@ -86,7 +87,8 @@ if &background == "dark"
   let s:purple          = s:light_purple
   let s:cyan            = s:light_cyan
   let s:green           = s:light_green
-  let s:visual          = s:light_black
+  let s:red             = s:light_red
+  let s:visual          = s:lighter_black
 else
   let s:bg              = s:white
   let s:bg_subtle       = s:light_gray
@@ -96,6 +98,7 @@ else
   let s:purple          = s:dark_purple
   let s:cyan            = s:dark_cyan
   let s:green           = s:dark_green
+  let s:red             = s:dark_red
   let s:visual          = s:light_blue
 endif
 
@@ -190,10 +193,10 @@ call s:h("DiffText",      {"fg": s:dark_blue})
 call s:h("SignColumn",    {"fg": s:light_green})
 " hi Conceal
 if has("gui_running")
-  call s:h("SpellBad",    {"gui": "undercurl", "sp": s:red})
-  call s:h("SpellCap",    {"gui": "undercurl", "sp": s:light_green})
-  call s:h("SpellRare",   {"gui": "undercurl", "sp": s:pink})
-  call s:h("SpellLocal",  {"gui": "undercurl", "sp": s:dark_green})
+  call s:h("SpellBad",    {"gui": "underline", "sp": s:red})
+  call s:h("SpellCap",    {"gui": "underline", "sp": s:light_green})
+  call s:h("SpellRare",   {"gui": "underline", "sp": s:pink})
+  call s:h("SpellLocal",  {"gui": "underline", "sp": s:dark_green})
 else
   call s:h("SpellBad",    {"cterm": "underline", "fg": s:red})
   call s:h("SpellCap",    {"cterm": "underline", "fg": s:light_green})
@@ -212,7 +215,7 @@ call s:h("CursorLine",    {"bg": s:bg_very_subtle})
 call s:h("ColorColumn",   {"bg": s:bg_subtle})
 
 " remainder of syntax highlighting
-call s:h("MatchParen",    {"bg": s:pink, "fg": s:norm})
+call s:h("MatchParen",    {"bg": s:bg_subtle, "fg": s:norm})
 call s:h("qfLineNr",      {"fg": s:medium_gray})
 
 " hi helpHyperTextJump guifg=#5FAFD7 ctermfg=74
